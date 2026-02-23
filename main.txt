@@ -1,0 +1,246 @@
+import React, { useState } from 'react';
+
+function App() {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const destinations = [
+    {
+      id: 1,
+      name: 'Paris, France',
+      image: 'https://images.unsplash.com/photo-1502602898662-a5e2277d70c4?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      description: 'The City of Love, famous for its iconic Eiffel Tower and world-class museums.',
+    },
+    {
+      id: 2,
+      name: 'Kyoto, Japan',
+      image: 'https://images.unsplash.com/photo-1545562092-231362077e60?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      description: 'Ancient temples, beautiful gardens, and traditional geisha districts.',
+    },
+    {
+      id: 3,
+      name: 'Santorini, Greece',
+      image: 'https://images.unsplash.com/photo-1501446698967-73d9d3056020?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      description: 'Stunning sunsets, white-washed villages, and clear blue Aegean waters.',
+    },
+    {
+      id: 4,
+      name: 'Rio de Janeiro, Brazil',
+      image: 'https://images.unsplash.com/photo-1516246830501-bc84918e6c70?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      description: 'Vibrant beaches, the Christ the Redeemer statue, and lively carnival spirit.',
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50 font-sans antialiased text-gray-800">
+      {/* Header */}
+      <header className="bg-white shadow-sm sticky top-0 z-50">
+        <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="#" className="flex items-center space-x-2 text-2xl font-bold text-indigo-600">
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zM12 11a2 2 0 100-4 2 2 0 000 4zM12 11c-2.21 0-4 1.79-4 4h8c0-2.21-1.79-4-4-4z"
+              ></path>
+            </svg>
+            <span>Wanderlust</span>
+          </a>
+          <ul className="flex space-x-6">
+            <li>
+              <a href="#" className="text-gray-600 hover:text-indigo-600 transition duration-300">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-gray-600 hover:text-indigo-600 transition duration-300">
+                Destinations
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-gray-600 hover:text-indigo-600 transition duration-300">
+                Tours
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-gray-600 hover:text-indigo-600 transition duration-300">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-gray-600 hover:text-indigo-600 transition duration-300">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section
+        className="relative h-[60vh] bg-cover bg-center flex items-center justify-center text-white"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1501785888041-af3ba6f60060?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+        }}
+      >
+        <div className="text-center px-4">
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">
+            Discover Your Next Adventure
+          </h1>
+          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto drop-shadow-md">
+            Explore breathtaking destinations and create unforgettable memories with Wanderlust.
+          </p>
+          <div className="flex justify-center">
+            <input
+              type="text"
+              placeholder="Search destinations..."
+              className="p-3 md:p-4 rounded-l-lg outline-none w-full max-w-md text-gray-900 shadow-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 md:py-4 px-6 rounded-r-lg shadow-lg transition duration-300">
+              Search
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Destinations Section */}
+      <section className="container mx-auto px-6 py-16">
+        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
+          Popular Destinations
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {destinations.map((destination) => (
+            <div
+              key={destination.id}
+              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+            >
+              <img
+                src={destination.image}
+                alt={destination.name}
+                className="w-full h-52 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+                  {destination.name}
+                </h3>
+                <p className="text-gray-600 mb-4">{destination.description}</p>
+                <button className="inline-flex items-center px-4 py-2 bg-indigo-500 text-white text-sm font-medium rounded-md hover:bg-indigo-600 transition duration-300">
+                  View Details
+                  <svg
+                    className="ml-2 w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section className="bg-indigo-700 text-white py-20 text-center">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl font-bold mb-4">Ready for an adventure?</h2>
+          <p className="text-xl mb-8 max-w-3xl mx-auto">
+            Sign up for our newsletter to get exclusive deals and travel inspiration delivered
+            straight to your inbox!
+          </p>
+          <button className="bg-white text-indigo-700 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 shadow-lg">
+            Join Our Newsletter
+          </button>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-300 py-12">
+        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 className="text-white text-xl font-bold mb-4">Wanderlust</h3>
+            <p className="text-sm">
+              Your ultimate guide to exploring the world. We help you find the best places and make
+              your travel dreams come true.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-white text-xl font-bold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="hover:text-indigo-400 transition duration-300">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-indigo-400 transition duration-300">
+                  Destinations
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-indigo-400 transition duration-300">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-indigo-400 transition duration-300">
+                  Terms of Service
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white text-xl font-bold mb-4">Contact Us</h3>
+            <p className="text-sm">123 Travel Lane, Adventure City</p>
+            <p className="text-sm">Email: info@wanderlust.com</p>
+            <p className="text-sm">Phone: +1 (555) 123-4567</p>
+            <div className="flex space-x-4 mt-4">
+              <a href="#" className="text-gray-400 hover:text-indigo-400 transition duration-300">
+                <svg
+                  className="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.656 9.126 8.438 9.879V14.65H8.025v-2.6h2.413V10.1c0-2.39 1.474-3.711 3.593-3.711 1.025 0 1.912.076 2.168.11v2.545h-1.545c-1.201 0-1.438.572-1.438 1.41V12.05h2.86l-.466 2.6H13.29v7.229C17.962 21.176 22 17.061 22 12c0-5.523-4.477-10-10-10z"></path>
+                </svg>
+              </a>
+              <a href="#" className="text-gray-400 hover:text-indigo-400 transition duration-300">
+                <svg
+                  className="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M22.46 6c-.8.36-1.63.6-2.5.7.9-.54 1.5-1.4 1.8-2.4-.8.48-1.7.82-2.6 1-.95-.98-2.3-1.58-3.8-1.58-2.9 0-5.2 2.3-5.2 5.2 0 .4.04.8.12 1.14C7.75 9.15 4.85 7.5 2.93 4.7.67 8.35 1.5 12.05 4.1 14c-.65-.03-1.25-.2-1.8-.5v.06c0 2.5 1.77 4.58 4.1 5-.43.1-.9.16-1.37.16-.33 0-.65-.03-.96-.08 1.25 4.05 4.88 7 9.18 7C17.3 20.65 19.1 21.3 20.9 21.3c.3 0 .6-.02.9-.06.02-.02.04-.04.06-.06-.17-.12-.34-.23-.5-.34C21.75 19.78 22.46 18 22.46 16c0-.28-.02-.56-.05-.83.8-.57 1.4-1.28 1.9-2.07z"></path>
+                </svg>
+              </a>
+              {/* Add more social icons as needed */}
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-500">
+          &copy; {new Date().getFullYear()} Wanderlust. All rights reserved.
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
